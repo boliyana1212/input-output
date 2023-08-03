@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hello World</h1>
+    <h2>Input Area</h2>
+    <form name="form">
+      <p>Masukkan Data disini : <input type="text" id="teks" /></p>
+      <p><input type="submit" /></p>
+      <h2>Output Area</h2>
+      <div id="tampilanData"></div>
+    </form>
+    <script>
+      function tarikData() {
+        document.forms["form"].onsubmit = function (event) {
+          event.preventDefault();
+          const y = document.getElementById("teks").value;
+          data.push(y);
+          document.forms["form"].reset();
+          tampilData();
+        };
+      }
+      function tampilData() {
+        clear();
+        for (let i = 0; i < data.length; i++) {
+          const tampil = data[i];
+          const p = document.createElement("p");
+          p.textContent = tampil;
+          const tampilanData = document.getElementById("tampilanData");
+          tampilanData.appendChild(p);
+        }
+      }
+      function clear() {
+        const tampilanData = document.getElementById("tampilanData");
+        while (tampilanData.firstChild) {
+          tampilanData.removeChild(tampilanData.firstChild);
+        }
+      }
+      const data = [];
+      tarikData();
+    </script>
+  </body>
+</html>
